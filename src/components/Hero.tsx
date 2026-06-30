@@ -223,22 +223,24 @@ export default function Hero() {
         </div>
 
         {/* Dot indicators */}
-        <div className="mt-10 flex items-center justify-center gap-3" role="tablist" aria-label="Slide indicators">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              role="tab"
-              aria-selected={i === current}
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => goTo(i)}
-              className="h-2 rounded-full transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
-              style={{
-                width: i === current ? "2.5rem" : "0.5rem",
-                background: i === current ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.4)",
-              }}
-            />
-          ))}
-        </div>
+        {slides.length > 1 && (
+          <div className="mt-10 flex items-center justify-center gap-3" role="tablist" aria-label="Slide indicators">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                role="tab"
+                aria-selected={i === current}
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => goTo(i)}
+                className="h-2 rounded-full transition-all duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+                style={{
+                  width: i === current ? "2.5rem" : "0.5rem",
+                  background: i === current ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.4)",
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── Scroll cue (Moved to bottom of screen) ────────────────────── */}
@@ -252,24 +254,28 @@ export default function Hero() {
       </div>
 
       {/* ── Prev / Next arrow buttons ─────────────────────────────────── */}
-      <button
-        onClick={goPrev}
-        aria-label="Previous image"
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/20 text-white/80 transition-all duration-200 hover:bg-black/40 hover:text-white sm:left-5 sm:h-12 sm:w-12 shadow-lg border border-white/10"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </button>
-      <button
-        onClick={goNext}
-        aria-label="Next image"
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/20 text-white/80 transition-all duration-200 hover:bg-black/40 hover:text-white sm:right-5 sm:h-12 sm:w-12 shadow-lg border border-white/10"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </button>
+      {slides.length > 1 && (
+        <>
+          <button
+            onClick={goPrev}
+            aria-label="Previous image"
+            className="absolute left-3 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/20 text-white/80 transition-all duration-200 hover:bg-black/40 hover:text-white sm:left-5 sm:h-12 sm:w-12 shadow-lg border border-white/10"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            onClick={goNext}
+            aria-label="Next image"
+            className="absolute right-3 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/20 text-white/80 transition-all duration-200 hover:bg-black/40 hover:text-white sm:right-5 sm:h-12 sm:w-12 shadow-lg border border-white/10"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </>
+      )}
     </section>
   );
 }
