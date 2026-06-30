@@ -119,21 +119,21 @@ export default function NavBar() {
       </header>
 
       {/* MOBILE OVERLAY MENU */}
-      <div className={`fixed inset-0 z-40 bg-white transition-transform duration-300 md:hidden ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`} style={{ top: '64px' }}>
-        <nav className="flex flex-col gap-2 p-5">
+      <div className={`fixed inset-x-0 z-40 bg-white transition-transform duration-300 md:hidden ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`} style={{ top: '64px', height: 'calc(100dvh - 64px)', overflowY: 'auto' }}>
+        <nav className="flex flex-col gap-1 p-4">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="flex items-center gap-4 rounded-xl p-4 text-lg font-medium text-[var(--color-text)] transition-colors hover:bg-[var(--color-surface)]"
+              className="flex items-center gap-4 rounded-xl px-4 py-4 text-base font-medium text-[var(--color-text)] transition-colors active:bg-[var(--color-surface)] hover:bg-[var(--color-surface)]"
             >
               <span className="text-[var(--color-primary)]">{link.icon}</span>
               {link.label}
             </Link>
           ))}
-          <div className="mt-4 border-t border-[var(--color-border)] pt-4">
-            <p className="px-4 pb-2 text-sm font-medium uppercase tracking-wide text-[var(--color-text-muted)]">
+          <div className="mt-3 border-t border-[var(--color-border)] pt-3">
+            <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">
               Community Work
             </p>
             {folders.map((folder) => (
@@ -141,7 +141,7 @@ export default function NavBar() {
                 key={folder.id}
                 href={`/gallery/${folder.id}`}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-4 rounded-xl p-4 text-[17px] text-[var(--color-text)] transition-colors hover:bg-[var(--color-surface)]"
+                className="flex items-center gap-4 rounded-xl px-4 py-4 text-base text-[var(--color-text)] transition-colors active:bg-[var(--color-surface)] hover:bg-[var(--color-surface)]"
               >
                 <span className="text-[var(--color-primary)] shrink-0" aria-hidden="true">
                   {FOLDER_ICONS[folder.id.toLowerCase()] || FOLDER_ICONS.default}

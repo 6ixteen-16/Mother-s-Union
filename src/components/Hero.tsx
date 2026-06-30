@@ -138,7 +138,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[88vh] items-center justify-center overflow-hidden full-bleed-left group"
+      className="relative flex min-h-[100svh] sm:min-h-[88vh] items-center justify-center overflow-hidden full-bleed-left group"
       aria-label="Hero"
     >
       {/* ── Layer 1: Crossfade slide stack ─────────────────────────────── */}
@@ -179,13 +179,13 @@ export default function Hero() {
       {/* ── Layer 2: Foreground content panel ───────────────────────────── */}
       <div
         ref={fgRef}
-        className="relative z-10 mx-auto flex w-[90%] max-w-3xl flex-col items-center justify-center rounded-[2rem] bg-black/30 p-8 text-center sm:p-12 md:p-16"
+        className="relative z-10 mx-auto flex w-[92%] max-w-3xl flex-col items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] bg-black/30 p-5 text-center sm:p-12 md:p-16"
         style={{ willChange: "transform" }}
       >
         {/* Floating MU crest */}
         <div
           ref={iconRef}
-          className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] animate-[hero-float_6s_ease-in-out_infinite]"
+          className="mb-4 sm:mb-6 inline-flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white p-2 sm:p-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)] animate-[hero-float_6s_ease-in-out_infinite]"
           style={{ transformStyle: "preserve-3d" }}
         >
           <Image
@@ -193,30 +193,30 @@ export default function Hero() {
             alt="Mothers Union crest"
             width={52}
             height={52}
-            className="h-14 w-14 object-contain"
+            className="h-10 w-10 sm:h-14 sm:w-14 object-contain"
             priority
           />
         </div>
 
-        <h1 className="font-serif text-4xl font-medium leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
+        <h1 className="font-serif text-3xl font-medium leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-5xl lg:text-6xl">
           Mothers Union Buganda
         </h1>
 
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] sm:text-lg">
+        <p className="mt-3 sm:mt-5 max-w-xl text-sm leading-relaxed text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] sm:text-lg">
           Supporting women, children, and families across the Buganda dioceses
           through faith, advocacy, and community outreach.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mt-5 sm:mt-8 flex flex-wrap justify-center gap-3">
           <a
             href="#community-work"
-            className="btn-press rounded-[var(--radius-full)] bg-white px-7 py-3 text-sm font-semibold text-[var(--color-primary)] shadow-[var(--shadow-lg)] transition-all duration-200 hover:bg-[var(--color-surface)] hover:-translate-y-0.5"
+            className="btn-press rounded-[var(--radius-full)] bg-white px-5 py-2.5 sm:px-7 sm:py-3 text-sm font-semibold text-[var(--color-primary)] shadow-[var(--shadow-lg)] transition-all duration-200 hover:bg-[var(--color-surface)] hover:-translate-y-0.5"
           >
             Explore Community Work
           </a>
           <Link
             href="/contact"
-            className="btn-press rounded-[var(--radius-full)] border border-white/50 bg-white/10 px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5"
+            className="btn-press rounded-[var(--radius-full)] border border-white/50 bg-white/10 px-5 py-2.5 sm:px-7 sm:py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5"
           >
             Get in Touch
           </Link>

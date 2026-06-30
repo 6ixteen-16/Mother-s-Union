@@ -123,11 +123,11 @@ export default function HeroImageManager() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-5">
+      <div className="flex flex-col gap-4 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-5">
         <div>
           <h2 className="font-medium text-[var(--color-text)]">Add New Image</h2>
           <p className="text-sm text-[var(--color-text-muted)]">
-            Recommended size: 1920x1080px (landscape).
+            Recommended size: 1920×1080px (landscape).
           </p>
         </div>
         <div className="relative">
@@ -141,7 +141,7 @@ export default function HeroImageManager() {
           />
           <button
             disabled={uploading}
-            className="btn-press flex items-center gap-2 rounded-[var(--radius-full)] bg-[var(--color-primary)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-dark)] disabled:opacity-50"
+            className="btn-press flex w-full sm:w-auto items-center justify-center gap-2 rounded-[var(--radius-full)] bg-[var(--color-primary)] px-5 py-3 sm:py-2.5 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-dark)] disabled:opacity-50"
           >
             {uploading ? (
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
@@ -192,7 +192,7 @@ export default function HeroImageManager() {
               
               <button
                 onClick={() => handleDelete(img)}
-                className="absolute right-2 top-2 rounded-full bg-red-600 p-2 text-white opacity-0 shadow-md transition-opacity group-hover:opacity-100 hover:bg-red-700 focus:opacity-100"
+                className="absolute right-2 top-2 rounded-full bg-red-600 p-2 text-white shadow-md transition-opacity opacity-100 sm:opacity-0 group-hover:opacity-100 hover:bg-red-700 focus:opacity-100"
                 aria-label="Delete image"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

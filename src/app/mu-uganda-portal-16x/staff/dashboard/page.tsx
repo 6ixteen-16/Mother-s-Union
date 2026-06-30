@@ -18,7 +18,7 @@ export default function StaffDashboardPage() {
   const { activity, loading } = useMyActivity();
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col gap-8">
+    <div className="mx-auto flex max-w-2xl flex-col gap-6 sm:gap-8">
       <div className="text-center">
         <h1 className="font-serif text-2xl font-medium text-[var(--color-text)]">
           Welcome back
@@ -31,7 +31,7 @@ export default function StaffDashboardPage() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Link
           href="/mu-uganda-portal-16x/staff/photos"
-          className="card-lift flex flex-col items-center gap-3 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-8 text-center"
+          className="card-lift flex flex-col items-center gap-2 sm:gap-3 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-white p-5 sm:p-8 text-center"
         >
           <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-surface)] text-[var(--color-primary)]">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -130,10 +130,10 @@ export default function StaffDashboardPage() {
           <div className="flex flex-col divide-y divide-[var(--color-border)]">
             {activity.map((item) => (
               <div key={item.id} className="flex items-center justify-between py-2.5">
-                <span className="text-sm text-[var(--color-text)]">
+                <span className="min-w-0 flex-1 truncate text-sm text-[var(--color-text)]">
                   {item.label}
                 </span>
-                <span className="text-xs text-[var(--color-text-muted)]">
+                <span className="ml-3 shrink-0 text-xs text-[var(--color-text-muted)]">
                   {item.type === "photo" ? "Photo" : "Post"} ·{" "}
                   {timeAgo(item.timestamp)}
                 </span>

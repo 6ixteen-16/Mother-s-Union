@@ -157,12 +157,12 @@ export default function Footer() {
       <div className="footer-cta-mesh transition-transform duration-500 ease-out" />
 
       {/* ── Pre-footer Banner ─────────────────────────── */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center px-5 py-16 sm:py-24" style={{ transformStyle: 'preserve-3d' }}>
+      <div className="relative z-10 flex w-full flex-col items-center justify-center px-4 py-10 sm:py-24" style={{ transformStyle: 'preserve-3d' }}>
         <div className="cta-text-3d text-center" style={{ transformStyle: 'preserve-3d' }}>
-          <p className="cta-title font-serif text-2xl font-medium text-[var(--color-primary)] sm:text-3xl">
+          <p className="cta-title font-serif text-xl font-medium text-[var(--color-primary)] sm:text-3xl">
             United in faith, serving together
           </p>
-          <p className="cta-subtitle mt-2 text-sm text-[var(--color-text-muted)] sm:text-base">
+          <p className="cta-subtitle mt-2 text-xs sm:text-sm text-[var(--color-text-muted)] sm:text-base">
             Mothers Union Buganda — active across the dioceses
           </p>
         </div>
@@ -174,7 +174,7 @@ export default function Footer() {
           ref={revealRef}
           className="reveal relative mx-auto max-w-6xl px-5 py-10 sm:px-8"
         >
-          <div className="grid items-start gap-6 sm:grid-cols-3" style={{ transformStyle: 'preserve-3d' }}>
+          <div className="grid items-start gap-5 sm:gap-6 sm:grid-cols-3" style={{ transformStyle: 'preserve-3d' }}>
 
             {/* Brand column */}
             <div className="footer-glass-col">

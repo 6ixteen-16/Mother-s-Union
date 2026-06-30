@@ -84,13 +84,13 @@ export default function Home() {
         <div className="border-y border-[var(--color-border)] bg-[var(--color-surface)] full-bleed-left">
           <div
             ref={statsRef}
-            className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-6 sm:px-8"
+            className="mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:gap-4 px-4 sm:px-8 py-4 sm:py-6"
           >
             {STATS.map((s, i) => (
               <div
                 key={s.label}
                 data-tilt
-                className={`stat-card stat-card-delay-${i + 1} flex flex-col items-center py-8 px-4 text-center ${
+                className={`stat-card stat-card-delay-${i + 1} flex flex-col items-center py-6 sm:py-8 px-3 sm:px-4 text-center ${
                   i === 0 ? "stat-card-cut-tl" : i === 1 ? "stat-card-cut-br" : ""
                 }`}
               >
@@ -108,7 +108,7 @@ export default function Home() {
         {/* ── About / Vision / Mission ─────────────────────── */}
         <section
           id="about"
-          className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20"
+          className="mx-auto max-w-6xl px-4 py-10 sm:px-8 sm:py-20"
         >
           <div
             ref={leftRef}

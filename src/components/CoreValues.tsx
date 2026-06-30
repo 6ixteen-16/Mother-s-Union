@@ -144,7 +144,7 @@ export default function CoreValues() {
 
   return (
     <section
-      className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24"
+      className="mx-auto max-w-6xl px-4 py-10 sm:px-8 sm:py-24"
       aria-labelledby="core-values-heading"
     >
       {/* Section header */}

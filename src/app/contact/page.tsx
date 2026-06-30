@@ -90,8 +90,8 @@ export default function ContactPage() {
   return (
     <>
       <main className="flex-1">
-        <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-16">
-          <h1 className="font-serif text-4xl font-medium text-[var(--color-text)]">
+        <div className="mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-16">
+          <h1 className="font-serif text-3xl sm:text-4xl font-medium text-[var(--color-text)]">
             Contact Us
           </h1>
           <p className="mt-2 max-w-xl text-[var(--color-text-muted)]">
