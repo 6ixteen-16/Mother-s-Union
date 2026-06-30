@@ -47,7 +47,6 @@ function useTilt(containerRef: React.RefObject<HTMLElement | null>) {
 }
 
 const STATS = [
-  { value: "50+", label: "Years of service" },
   { value: "10k+", label: "Women supported" },
   { value: "4", label: "Community pillars" },
 ];
@@ -85,14 +84,14 @@ export default function Home() {
         <div className="border-y border-[var(--color-border)] bg-[var(--color-surface)] full-bleed-left">
           <div
             ref={statsRef}
-            className="mx-auto grid max-w-6xl grid-cols-3 gap-4 px-5 py-6 sm:px-8"
+            className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-6 sm:px-8"
           >
             {STATS.map((s, i) => (
               <div
                 key={s.label}
                 data-tilt
                 className={`stat-card stat-card-delay-${i + 1} flex flex-col items-center py-8 px-4 text-center ${
-                  i === 0 ? "stat-card-cut-tl" : i === 2 ? "stat-card-cut-br" : ""
+                  i === 0 ? "stat-card-cut-tl" : i === 1 ? "stat-card-cut-br" : ""
                 }`}
               >
                 <span className="font-serif text-3xl font-semibold text-[var(--color-primary)] sm:text-4xl">
