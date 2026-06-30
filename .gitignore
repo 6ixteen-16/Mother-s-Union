@@ -1,0 +1,36 @@
+# Next.js
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Env files — never commit real credentials
+.env.local
+.env.production
+.env
+
+# Firebase service account key — never commit this
+serviceAccountKey.json
+serviceAccountKey.*.json
+*firebase-adminsdk*.json
+
+# Misc
+.DS_Store
+*.pem
+
+# AI agent tooling — local only, not part of the project
+.agent/
+.claude/
+AGENTS.md
+CLAUDE.md
+
+# Dev/build artifacts
+tsconfig.tsbuildinfo
+scratch/
+
+# Dev-only scripts
+replace-admin.js
+
+# Internal changelogs
+bug_fixes_changelog.md

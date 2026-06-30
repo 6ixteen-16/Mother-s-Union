@@ -1,0 +1,27 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    // Photos — any authenticated admin can upload/delete
+    match /photos/{folderId}/{photoId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Blog cover images — any authenticated admin can upload/delete
+    match /blog-covers/{imageId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Deny everything else
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

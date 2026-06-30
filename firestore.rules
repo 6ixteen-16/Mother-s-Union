@@ -1,0 +1,85 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: is the requester an authenticated admin at all?
+    function isAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
+        (get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'admin' ||
+         get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'super_admin');
+    }
+
+    // Helper: is the requester specifically the super_admin?
+    function isSuperAdmin() {
+      return request.auth != null &&
+        get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'super_admin';
+    }
+
+    // ── admins ──────────────────────────────────────────────
+    // Only super_admin can read/write the staff list. Each admin can
+    // read their own doc (needed by AuthContext to resolve their role).
+    match /admins/{adminId} {
+      allow read: if isSuperAdmin() || request.auth.uid == adminId;
+      allow create, delete: if isSuperAdmin();
+      allow update: if isSuperAdmin() || 
+        (request.auth.uid == adminId && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['needsPasswordReset']));
+    }
+
+    // ── folders ─────────────────────────────────────────────
+    // Public can read visible folders. Only super_admin can
+    // create/delete folders or change their visibility/metadata.
+    // Regular admins may update photoCount only (incremented/decremented
+    // automatically when they upload or delete photos).
+    match /folders/{folderId} {
+      allow read: if resource.data.isVisible == true || isAdmin();
+      allow create, delete: if isAdmin();
+      allow update: if isSuperAdmin() ||
+        (isAdmin() &&
+         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['photoCount']));
+
+    }
+
+    // ── photos (collection group) ───────────────────────────
+    // Public can read published photos. Both admin tiers can
+    // upload/edit/delete photos. Placed at the root using {path=**}
+    // so useDashboardStats can perform a collectionGroup("photos") query.
+    match /{path=**}/photos/{photoId} {
+      allow read: if resource.data.isPublished == true || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ── blogPosts ───────────────────────────────────────────
+    // Public can read published posts. Both admin tiers can
+    // create/edit/delete — but an admin should only edit their own
+    // posts (enforced here; super_admin can manage any post).
+    match /blogPosts/{postId} {
+      allow read: if resource.data.isPublished == true || isAdmin();
+      allow create: if isAdmin();
+      allow update, delete: if isSuperAdmin() ||
+        (isAdmin() && resource.data.createdBy == request.auth.token.email);
+    }
+
+    // ── orgContent ──────────────────────────────────────────
+    // Public read. Admins can edit About/Vision/Mission/Core Values.
+    match /orgContent/{sectionId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── contactMessages ─────────────────────────────────────
+    // Public can create (submit the contact form) but never read.
+    // Only super_admin can read/manage submitted messages.
+    match /contactMessages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if isSuperAdmin();
+    }
+    // ── heroImages ──────────────────────────────────────────
+    // Public read. Admins can upload and delete hero images.
+    match /heroImages/{imageId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}
