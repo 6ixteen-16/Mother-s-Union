@@ -2,12 +2,12 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { doc, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, setDoc, deleteDoc, collection } from "firebase/firestore";
 import { db, auth } from "@/lib/firebase";
 import { useHeroImages } from "@/hooks/useHeroImages";
 import { useToast } from "@/components/Toast";
 import type { HeroImage } from "@/lib/types";
-import { v4 as uuidv4 } from "uuid";
+
 
 export default function HeroImageManager() {
   const { images, loading } = useHeroImages();
@@ -42,6 +42,7 @@ export default function HeroImageManager() {
       formData.append("file", file);
       formData.append("upload_preset", uploadPreset);
       formData.append("folder", "mu-buganda/hero");
+      formData.append("public_id", `hero_${Date.now()}_${Math.random().toString(36).substring(7)}`);
 
       const res = await fetch(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
@@ -78,15 +79,15 @@ export default function HeroImageManager() {
       
       const { secure_url } = responseData;
 
-      const imageId = uuidv4();
+      const heroRef = doc(collection(db, "heroImages"));
       const heroImage: HeroImage = {
-        id: imageId,
+        id: heroRef.id,
         storagePath: secure_url,
         uploadedAt: Date.now(),
         uploadedBy: auth.currentUser?.email || "Unknown",
       };
 
-      await setDoc(doc(db, "heroImages", imageId), heroImage);
+      await setDoc(heroRef, heroImage);
       showToast("Hero image uploaded successfully");
     } catch (error: any) {
       console.error(error);
