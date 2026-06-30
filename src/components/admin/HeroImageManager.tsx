@@ -31,27 +31,52 @@ export default function HeroImageManager() {
 
     setUploading(true);
     try {
-      const token = await auth.currentUser?.getIdToken();
-      if (!token) throw new Error("Not authenticated");
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!;
+      const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!;
+
+      if (!cloudName || !uploadPreset) {
+        throw new Error("Missing Cloudinary configuration");
+      }
 
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("upload_preset", uploadPreset);
       formData.append("folder", "mu-buganda/hero");
 
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Upload failed");
+        let errorMsg = "Upload failed";
+        try {
+          const text = await res.text();
+          try {
+            const data = JSON.parse(text);
+            errorMsg = data.error?.message || data.error || errorMsg;
+          } catch {
+            console.error("Non-JSON error response from upload API:", text);
+            errorMsg = `Server error ${res.status}: ${text.substring(0, 100)}`;
+          }
+        } catch (e) {
+          errorMsg = "Upload failed and couldn't read response";
+        }
+        throw new Error(errorMsg);
       }
 
-      const { secure_url } = await res.json();
+      let responseData;
+      try {
+        const text = await res.text();
+        responseData = JSON.parse(text);
+      } catch (e) {
+        throw new Error("Server returned an invalid non-JSON response on success.");
+      }
+      
+      const { secure_url } = responseData;
 
       const imageId = uuidv4();
       const heroImage: HeroImage = {

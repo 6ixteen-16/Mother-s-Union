@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     const file = form.get("file") as File | null;
     const rawFolder = (form.get("folder") as string) || "mu-buganda";
     // Sanitize folder to prevent directory traversal or malformed paths
-    const folder = rawFolder.replace(/[^a-zA-Z0-9-_]/g, "");
+    const folder = rawFolder.replace(/[^a-zA-Z0-9-_\/]/g, "");
 
     if (!file) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
