@@ -50,7 +50,7 @@ export default function Hero() {
   useEffect(() => {
     function onScroll() {
       const y = window.scrollY;
-      
+
       if (y > 100) {
         hasScrolledDown.current = true;
       }
@@ -82,9 +82,9 @@ export default function Hero() {
       ticking = true;
       requestAnimationFrame(() => {
         const y = window.scrollY;
-        if (bgRef.current)  bgRef.current.style.transform  = `translateY(${y * 0.4}px)`;
+        if (bgRef.current) bgRef.current.style.transform = `translateY(${y * 0.4}px)`;
         if (midRef.current) midRef.current.style.transform = `translateY(${y * 0.25}px)`;
-        if (fgRef.current)  fgRef.current.style.transform  = `translateY(${y * 0.15}px)`;
+        if (fgRef.current) fgRef.current.style.transform = `translateY(${y * 0.15}px)`;
         ticking = false;
       });
     }
@@ -105,8 +105,8 @@ export default function Hero() {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const rect = section!.getBoundingClientRect();
-        const dx = (e.clientX - rect.left - rect.width  / 2) / rect.width;
-        const dy = (e.clientY - rect.top  - rect.height / 2) / rect.height;
+        const dx = (e.clientX - rect.left - rect.width / 2) / rect.width;
+        const dy = (e.clientY - rect.top - rect.height / 2) / rect.height;
         icon!.style.transform = `rotateX(${-dy * 14}deg) rotateY(${dx * 18}deg) translateZ(0)`;
         if (bgInnerRef.current)
           bgInnerRef.current.style.transform = `translate(${-dx * 16}px, ${-dy * 16}px)`;
@@ -128,7 +128,7 @@ export default function Hero() {
   // ── Keyboard nav ──────────────────────────────────────────────────────
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "ArrowLeft")  goPrev();
+      if (e.key === "ArrowLeft") goPrev();
       if (e.key === "ArrowRight") goNext();
     }
     window.addEventListener("keydown", onKey);
@@ -203,7 +203,7 @@ export default function Hero() {
         </h1>
 
         <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] sm:text-lg">
-          Supporting women, children, and families across the Buganda Diocese
+          Supporting women, children, and families across the Buganda dioceses
           through faith, advocacy, and community outreach.
         </p>
 

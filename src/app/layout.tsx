@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     template: "%s | Mothers Union Buganda",
   },
   description:
-    "Mothers Union Buganda — supporting women, children, and families across the Buganda Diocese through faith, advocacy, and community outreach.",
+    "Mothers Union Buganda — supporting women, children, and families across the Buganda diocesess through faith, advocacy, and community outreach.",
   metadataBase: new URL("https://mothers-union-buganda.vercel.app"),
   openGraph: {
     title: "Mothers Union Buganda",
     description:
-      "Supporting women, children, and families across the Buganda Diocese through faith, advocacy, and community outreach.",
+      "Supporting women, children, and families across the Buganda diocesess through faith, advocacy, and community outreach.",
     siteName: "Mothers Union Buganda",
     type: "website",
   },

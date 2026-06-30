@@ -15,7 +15,7 @@ import { db, storage } from "@/lib/firebase";
 import type { CommunityFolder, Photo } from "@/lib/types";
 
 const DUMMY_FOLDERS: CommunityFolder[] = [
-  { id: "schools", name: "Schools", description: "Outreach and support programmes at schools across the diocese.", iconEmoji: "🏫", isVisible: true, photoCount: 4, createdAt: 0, createdBy: "system" },
+  { id: "schools", name: "Schools", description: "Outreach and support programmes at schools across the diocesess.", iconEmoji: "🏫", isVisible: true, photoCount: 4, createdAt: 0, createdBy: "system" },
   { id: "churches", name: "Churches", description: "Activities, services, and gatherings at parish churches.", iconEmoji: "⛪", isVisible: true, photoCount: 4, createdAt: 0, createdBy: "system" },
   { id: "hospitals", name: "Hospitals", description: "Health outreach, maternal care visits, and hospital partnerships.", iconEmoji: "🏥", isVisible: true, photoCount: 4, createdAt: 0, createdBy: "system" },
   { id: "markets", name: "Markets", description: "Economic empowerment initiatives and market-based community work.", iconEmoji: "🛒", isVisible: true, photoCount: 4, createdAt: 0, createdBy: "system" },
@@ -111,7 +111,7 @@ export function useAllFolders() {
       collection(db, "folders"),
       where("isVisible", "==", true)
     );
-    
+
     const unsubscribe = onSnapshot(q, (snap) => {
       const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() } as CommunityFolder));
       setFolders(docs.length > 0 ? docs : DUMMY_FOLDERS);

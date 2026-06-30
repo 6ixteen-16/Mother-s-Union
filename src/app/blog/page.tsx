@@ -25,7 +25,7 @@ export default function BlogListPage() {
           </h1>
           <p className="mt-2 max-w-xl text-[var(--color-text-muted)]">
             Stories, updates, and reflections from across the Buganda
-            Diocese.
+            dioceses.
           </p>
 
           <div className="mt-10">

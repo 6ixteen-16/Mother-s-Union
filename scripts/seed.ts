@@ -43,7 +43,7 @@ const INITIAL_FOLDERS = [
     id: "schools",
     name: "Schools",
     description:
-      "Outreach and support programmes at schools across the diocese.",
+      "Outreach and support programmes at schools across the dioceses.",
     iconEmoji: "🏫",
     isVisible: true,
     photoCount: 0,
@@ -90,7 +90,7 @@ const ORG_CONTENT = [
     id: "about",
     sectionType: "about",
     bodyText:
-      "Mothers Union Buganda is the Buganda Diocese chapter of the worldwide Mothers Union, a Christian charity supporting women, children, and families through prayer, advocacy, and practical outreach across parishes, deaneries, and the central diocesan office.",
+      "Mothers Union Buganda is the Buganda dioceses chapter of the worldwide Mothers Union, a Christian charity supporting women, children, and families through prayer, advocacy, and practical outreach across parishes, deaneries, and the central diocesan office.",
     lastUpdated: Date.now(),
     updatedBy: SUPER_ADMIN_EMAIL,
   },
@@ -106,7 +106,7 @@ const ORG_CONTENT = [
     id: "mission",
     sectionType: "mission",
     bodyText:
-      "To nurture strong Christian family life through prayer, advocacy, and hands-on community outreach across the Buganda Diocese.",
+      "To nurture strong Christian family life through prayer, advocacy, and hands-on community outreach across the Buganda dioceses.",
     lastUpdated: Date.now(),
     updatedBy: SUPER_ADMIN_EMAIL,
   },

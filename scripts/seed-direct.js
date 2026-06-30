@@ -13,20 +13,20 @@ initializeApp({ credential: cert(serviceAccount) });
 
 const db = getFirestore();
 
-const SUPER_ADMIN_UID   = "qJzdcvZW8Xe6fGmtkRpz7zkRh5B3";
+const SUPER_ADMIN_UID = "qJzdcvZW8Xe6fGmtkRpz7zkRh5B3";
 const SUPER_ADMIN_EMAIL = "kitegyec@gmail.com";
 
 const FOLDERS = [
-  { id: "schools",   name: "Schools",   description: "Outreach and support programmes at schools across the diocese.",         isVisible: true, photoCount: 0 },
-  { id: "churches",  name: "Churches",  description: "Activities, services, and gatherings at parish churches.",                isVisible: true, photoCount: 0 },
-  { id: "hospitals", name: "Hospitals", description: "Health outreach, maternal care visits, and hospital partnerships.",       isVisible: true, photoCount: 0 },
-  { id: "markets",   name: "Markets",   description: "Economic empowerment initiatives and market-based community work.",       isVisible: true, photoCount: 0 },
+  { id: "schools", name: "Schools", description: "Outreach and support programmes at schools across the dioceses.", isVisible: true, photoCount: 0 },
+  { id: "churches", name: "Churches", description: "Activities, services, and gatherings at parish churches.", isVisible: true, photoCount: 0 },
+  { id: "hospitals", name: "Hospitals", description: "Health outreach, maternal care visits, and hospital partnerships.", isVisible: true, photoCount: 0 },
+  { id: "markets", name: "Markets", description: "Economic empowerment initiatives and market-based community work.", isVisible: true, photoCount: 0 },
 ];
 
 const ORG_CONTENT = [
-  { id: "about",   sectionType: "about",   bodyText: "Mothers Union Buganda is the Buganda Diocese chapter of the worldwide Mothers Union, a Christian charity supporting women, children, and families through prayer, advocacy, and practical outreach across parishes, deaneries, and the central diocesan office." },
-  { id: "vision",  sectionType: "vision",  bodyText: "A community where every woman, child, and family flourishes in faith, dignity, and love." },
-  { id: "mission", sectionType: "mission", bodyText: "To nurture strong Christian family life through prayer, advocacy, and hands-on community outreach across the Buganda Diocese." },
+  { id: "about", sectionType: "about", bodyText: "Mothers Union Buganda is the Buganda dioceses chapter of the worldwide Mothers Union, a Christian charity supporting women, children, and families through prayer, advocacy, and practical outreach across parishes, deaneries, and the central diocesan office." },
+  { id: "vision", sectionType: "vision", bodyText: "A community where every woman, child, and family flourishes in faith, dignity, and love." },
+  { id: "mission", sectionType: "mission", bodyText: "To nurture strong Christian family life through prayer, advocacy, and hands-on community outreach across the Buganda dioceses." },
 ];
 
 async function seed() {

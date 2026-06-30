@@ -33,7 +33,7 @@ export default function CommunityWorkPanel() {
       </h2>
       <p className="mb-5 text-sm leading-relaxed text-[var(--color-text-muted)] reveal-up" style={{ transitionDelay: "100ms" }}>
         Browse photos from our outreach across schools, churches, hospitals,
-        and markets throughout the diocese.
+        and markets throughout the dioceses.
       </p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

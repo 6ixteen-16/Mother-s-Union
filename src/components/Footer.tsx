@@ -17,20 +17,20 @@ const QUICK_LINKS = [
 ];
 
 const SOCIAL_SLOTS = [
-  { 
-    label: "Facebook", 
-    href: "/", 
-    icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> 
+  {
+    label: "Facebook",
+    href: "/",
+    icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
   },
-  { 
-    label: "LinkedIn", 
-    href: "/", 
-    icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="4" ry="4"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg> 
+  {
+    label: "LinkedIn",
+    href: "/",
+    icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="4" ry="4" /><path d="M8 11v5" /><path d="M8 8v.01" /><path d="M12 16v-5" /><path d="M16 16v-3a2 2 0 0 0-4 0" /></svg>
   },
-  { 
-    label: "X", 
-    href: "https://x.com/mothersbuganda?s=11", 
-    icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h7.002l4.261 5.636 4.731-5.636Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg> 
+  {
+    label: "X",
+    href: "https://x.com/mothersbuganda?s=11",
+    icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.25 2.25h7.002l4.261 5.636 4.731-5.636Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" /></svg>
   },
 ];
 
@@ -53,7 +53,7 @@ export default function Footer() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     let ctx = gsap.context(() => {
       const isMobile = window.innerWidth < 768;
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -74,7 +74,7 @@ export default function Footer() {
         // CTA text depths
         gsap.set(".cta-title", { z: 60 });
         gsap.set(".cta-subtitle", { z: 30 });
-        
+
         // Parallax depth movements
         gsap.to(".cta-title", {
           y: 40,
@@ -86,7 +86,7 @@ export default function Footer() {
             scrub: true,
           },
         });
-        
+
         gsap.to(".cta-subtitle", {
           y: 20,
           ease: "none",
@@ -101,10 +101,10 @@ export default function Footer() {
         // Columns staggered reveal parallax
         const cols = gsap.utils.toArray<HTMLElement>(".footer-glass-col");
         const depths = [40, 20, 10]; // Logo, Quick Links, Office
-        
+
         cols.forEach((col, i) => {
           gsap.set(col, { z: depths[i] });
-          gsap.fromTo(col, 
+          gsap.fromTo(col,
             { y: depths[i] * 2 },
             {
               y: 0,
@@ -128,12 +128,12 @@ export default function Footer() {
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!canHover || prefersReduced) return;
-    
+
     const wrapper = e.currentTarget;
     const r = wrapper.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
     const y = (e.clientY - r.top) / r.height - 0.5;
-    
+
     const mesh = wrapper.querySelector('.footer-cta-mesh') as HTMLElement;
     if (mesh) {
       mesh.style.transform = `translate(${x * -5}%, ${y * -5}%) scale(1.1)`;
@@ -148,7 +148,7 @@ export default function Footer() {
   };
 
   return (
-    <footer 
+    <footer
       ref={footerRef}
       className="footer-cta-wrapper relative mt-auto bg-blue-50/50 full-bleed-left"
       onMouseMove={handleMouseMove}
@@ -163,7 +163,7 @@ export default function Footer() {
             United in faith, serving together
           </p>
           <p className="cta-subtitle mt-2 text-sm text-[var(--color-text-muted)] sm:text-base">
-            Mothers Union Buganda — active across the Diocese
+            Mothers Union Buganda — active across the dioceses
           </p>
         </div>
       </div>
@@ -181,7 +181,7 @@ export default function Footer() {
               <Logo variant="logo-only" className="w-[200px] h-auto -ml-3 mb-4" />
               <p className="max-w-xs text-sm leading-relaxed text-[var(--color-text-muted)]">
                 Supporting women, children, and families across the Buganda
-                Diocese through faith, advocacy, and practical outreach.
+                dioceses through faith, advocacy, and practical outreach.
               </p>
 
               {/* Social buttons */}
@@ -257,11 +257,10 @@ export default function Footer() {
       <button
         id="scroll-top-btn"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary)] text-white shadow-lg transition-all duration-300 hover:bg-[var(--color-primary-dark)] hover:scale-105 ${
-          showTopBtn
+        className={`fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary)] text-white shadow-lg transition-all duration-300 hover:bg-[var(--color-primary-dark)] hover:scale-105 ${showTopBtn
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-12 opacity-0"
-        }`}
+          }`}
         aria-label="Scroll to top"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
